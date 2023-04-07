@@ -7,6 +7,7 @@ import handlebars from 'express-handlebars';
 import viewsRouter from './routes/views.router.js';
 import productRoute from './routes/products.js';
 import cartRoute from './routes/carts.js';
+import loginRouter from './routes/github.js'
 import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import passport from 'passport';
@@ -46,7 +47,7 @@ app.use(express.static(__dirname+'/public'));
 app.use('/', viewsRouter)
 app.use('/api/products', productRoute);
 app.use('/api/cart', cartRoute);
-
+app.use('/auth', loginRouter)
 
 
 socketServer.on('connection', socket => {
